@@ -1,11 +1,32 @@
+import java.util.*;
+import java.io.*;
+
 public class LSDistance
 {
     public static void main(String[] args)
     {
-        String wordOne = args[0];
-        String wordTwo = args[1];
+        String fileOne = args[0];
+        String fileTwo = args[1];
+        String wordOne = "";
+        String wordTwo = "";
 
-        System.out.println(LSCalcMemo(wordOne, wordTwo));
+        try{
+            Scanner scanner1 = new Scanner(new File(fileOne));
+            Scanner scanner2 = new Scanner(new File(fileTwo));
+            int lineCount = 1;
+            while(scanner1.hasNextLine() && scanner2.hasNextLine())
+            {
+                wordOne = scanner1.nextLine();
+                wordTwo = scanner2.nextLine();
+
+                System.out.println("Line " + lineCount + " Similarity: " + LSCalcMemo(wordOne, wordTwo));
+                lineCount++;
+            }
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println("Could Not Find File Specified.");
+        }
     }
 
     public static int LSCalcHelp(String wordOne, String wordTwo)
