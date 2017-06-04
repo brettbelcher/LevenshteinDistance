@@ -8,6 +8,6 @@ The dynamic approach works by starting with a matrix of size m x n. We then fill
 
 How to run:
 
-javac LevenshteinDistance.java
+javac LSDistance.java
 
-java LevenshteinDistance inputfile1 inputfile2
+java LSDistance inputfile1 inputfile2
