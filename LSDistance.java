@@ -9,6 +9,7 @@ public class LSDistance
         String fileTwo = args[1];
         String wordOne = "";
         String wordTwo = "";
+        int totalDistance = 0;
 
         try{
             Scanner scanner1 = new Scanner(new File(fileOne));
@@ -18,8 +19,9 @@ public class LSDistance
             {
                 wordOne = scanner1.nextLine();
                 wordTwo = scanner2.nextLine();
-
-                System.out.println("Line " + lineCount + " Similarity: " + LSCalcMemo(wordOne, wordTwo));
+                int curDist = LSCalcMemo(wordOne, wordTwo);
+                System.out.println("Line " + lineCount + " Similarity: " + curDist);
+                totalDistance += curDist;
                 lineCount++;
             }
         }
@@ -27,6 +29,8 @@ public class LSDistance
         {
             System.out.println("Could Not Find File Specified.");
         }
+
+        System.out.println("\n\nTotal Distance: " + totalDistance);
     }
 
     public static int LSCalcHelp(String wordOne, String wordTwo)
